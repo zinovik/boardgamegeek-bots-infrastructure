@@ -31,13 +31,11 @@ resource "google_service_account" "spacelift" {
   display_name = "Spacelift Deployment Service Account"
 }
 
-data "google_project" "project" {}
-
 resource "google_service_account_iam_member" "workload_identity_user" {
   service_account_id = google_service_account.spacelift.name
   role = "roles/iam.workloadIdentityUser"
 
-  member = "principalSet://iam.googleapis.com/projects/${data.google_project.project.number}/locations/global/workloadIdentityPools/${google_iam_workload_identity_pool.spacelift_pool.workload_identity_pool_id}/attribute.repository/zinovik/boardgamegeek-bots-infrastructure"
+  member = "principalSet://iam.googleapis.com/projects/${var.project_number}/locations/global/workloadIdentityPools/${google_iam_workload_identity_pool.spacelift_pool.workload_identity_pool_id}/attribute.repository/zinovik/boardgamegeek-bots-infrastructure"
 }
 
 resource "google_project_iam_member" "spacelift_viewer" {
