@@ -13,11 +13,11 @@ resource "google_service_account_iam_member" "spacelift_workload_identity_user" 
 resource "google_project_iam_member" "spacelift_browser" {
   project = var.project_id
   role    = "roles/browser"
-  member  = "serviceAccount:${google_service_account.spacelift.email}"
+  member  = "serviceAccount:${var.spacelift_service_account_email}"
 }
 
 resource "google_project_iam_member" "spacelift_secret_admin" {
   project = var.project_id
   role    = "roles/secretmanager.admin"
-  member  = "serviceAccount:${google_service_account.spacelift.email}"
+  member  = "serviceAccount:${var.spacelift_service_account_email}"
 }

@@ -39,3 +39,8 @@ variable "allowed_github_repos" {
   type        = list(string)
   default     = ["zinovik/bgg-games-ranks-parser", "zinovik/bgg-top100-bot", "zinovik/bgg-top1000-bot", "zinovik/bgg-games-ranks-cacher"]
 }
+
+variable "spacelift_service_account_email" {
+  description = "Spacelift service account email"
+  type        = string
+}
