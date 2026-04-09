@@ -38,6 +38,18 @@ resource "google_storage_bucket_iam_member" "bgg_games_ranks_cacher_bucket_acces
 
 #
 
+resource "google_secret_manager_secret_iam_member" "bgg_top100_bot_secret_accessor" {
+  secret_id = google_secret_manager_secret.bgg_top100_bot_telegram_token.id
+  role      = "roles/secretmanager.secretAccessor"
+  member    = "serviceAccount:${google_service_account.bgg_top100_bot.email}"
+}
+
+resource "google_secret_manager_secret_iam_member" "bgg_top1000_bot_secret_accessor" {
+  secret_id = google_secret_manager_secret.bgg_top1000_bot_telegram_token.id
+  role      = "roles/secretmanager.secretAccessor"
+  member    = "serviceAccount:${google_service_account.bgg_top1000_bot.email}"
+}
+
 # resource "google_cloudfunctions_function_iam_member" "bgg_top100_bot_function_invoker" {
 #   project        = var.project_id
 #   region         = var.region
