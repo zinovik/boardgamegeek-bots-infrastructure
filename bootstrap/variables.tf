@@ -33,3 +33,9 @@ variable "stack" {
   type        = string
   default     = "boardgamegeek-bots"
 }
+
+variable "allowed_github_repos" {
+  description = "List of allowed GitHub repositories for workload identity"
+  type        = list(string)
+  default     = ["zinovik/bgg-games-ranks-parser", "zinovik/bgg-top100-bot", "zinovik/bgg-top1000-bot", "zinovik/bgg-games-ranks-cacher"]
+}

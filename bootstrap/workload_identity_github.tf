@@ -20,7 +20,7 @@ resource "google_iam_workload_identity_pool_provider" "github_provider" {
   }
 
   attribute_condition = <<EOT
-    assertion.repository == "zinovik/bgg-games-ranks-parser" &&
+    assertion.repository in ${jsonencode(var.allowed_github_repos)} &&
     assertion.ref == "refs/heads/main"
   EOT
 }
