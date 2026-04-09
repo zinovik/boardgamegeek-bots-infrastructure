@@ -1,0 +1,63 @@
+resource "google_service_account" "bgg_games_ranks_parser" {
+  account_id   = "bgg-games-ranks-parser"
+  display_name = "BGG Games Ranks Parser Service Account"
+}
+
+resource "google_service_account" "bgg_top100_bot" {
+  account_id   = "bgg-top100-bot"
+  display_name = "BGG Top 100 Bot Service Account"
+}
+
+resource "google_service_account" "bgg_top1000_bot" {
+  account_id   = "bgg-top1000-bot"
+  display_name = "BGG Top 1000 Bot Service Account"
+}
+
+resource "google_service_account" "bgg_games_ranks_cacher" {
+  account_id   = "bgg-games-ranks-cacher"
+  display_name = "BGG Games Ranks Cacher Service Account"
+}
+
+resource "google_storage_bucket_iam_member" "bgg_top100_bot_bucket_access" {
+  bucket = google_storage_bucket.boardgamegeek-ranks.name
+  role   = "roles/storage.objectAdmin"
+  member = "serviceAccount:${google_service_account.bgg_top100_bot.email}"
+}
+
+resource "google_storage_bucket_iam_member" "bgg_top1000_bot_bucket_access" {
+  bucket = google_storage_bucket.boardgamegeek-ranks.name
+  role   = "roles/storage.objectAdmin"
+  member = "serviceAccount:${google_service_account.bgg_top1000_bot.email}"
+}
+
+resource "google_storage_bucket_iam_member" "bgg_games_ranks_cacher_bucket_access" {
+  bucket = google_storage_bucket.boardgamegeek-ranks.name
+  role   = "roles/storage.objectAdmin"
+  member = "serviceAccount:${google_service_account.bgg_games_ranks_cacher.email}"
+}
+
+#
+
+# resource "google_cloudfunctions_function_iam_member" "bgg_top100_bot_function_invoker" {
+#   project        = var.project_id
+#   region         = var.region
+#   cloud_function = "bgg-games-ranks-parser"
+#   role           = "roles/cloudfunctions.invoker"
+#   member         = "serviceAccount:${google_service_account.bgg_top100_bot.email}"
+# }
+
+# resource "google_cloudfunctions_function_iam_member" "bgg_top1000_bot_function_invoker" {
+#   project        = var.project_id
+#   region         = var.region
+#   cloud_function = "bgg-games-ranks-parser"
+#   role           = "roles/cloudfunctions.invoker"
+#   member         = "serviceAccount:${google_service_account.bgg_top1000_bot.email}"
+# }
+
+# resource "google_cloudfunctions_function_iam_member" "bgg_games_ranks_cacher_function_invoker" {
+#   project        = var.project_id
+#   region         = var.region
+#   cloud_function = "bgg-games-ranks-parser"
+#   role           = "roles/cloudfunctions.invoker"
+#   member         = "serviceAccount:${google_service_account.bgg_games_ranks_cacher.email}"
+# }
