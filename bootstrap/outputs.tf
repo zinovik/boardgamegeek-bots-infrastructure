@@ -2,10 +2,6 @@ output "project_id" {
   value = var.project_id
 }
 
-output "spacelift_service_account_email" {
-  value = google_service_account.spacelift.email
-}
-
 output "github_service_account_email" {
   value = google_service_account.github.email
 }
