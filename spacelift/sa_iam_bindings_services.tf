@@ -22,5 +22,5 @@ resource "google_cloud_run_service_iam_member" "bgg_games_ranks_cacher_function_
   service  = "bgg-games-ranks-parser"
 
   role   = "roles/run.invoker"
-  member = "serviceAccount:bgg-top100-bot@${var.project_id}.iam.gserviceaccount.com"
+  member = "serviceAccount:bgg-games-ranks-cacher@${var.project_id}.iam.gserviceaccount.com"
 }
