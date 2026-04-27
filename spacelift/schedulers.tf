@@ -36,8 +36,7 @@ resource "google_cloud_scheduler_job" "bgg_top100_bot" {
   schedule = "0 9 * * 6"
 
   http_target {
-    # uri         = "https://europe-central2-boardgamegeek-bots.cloudfunctions.net/bgg-top100-bot?channelId=@bggtop100&isDevMode=off"
-    uri         = "https://europe-central2-boardgamegeek-bots.cloudfunctions.net/bgg-top100-bot?channelId=446618160&isDevMode=off"
+    uri         = "https://europe-central2-boardgamegeek-bots.cloudfunctions.net/bgg-top100-bot?channelId=@bggtop100&isDevMode=off"
     http_method = "GET"
 
     oidc_token {
@@ -53,8 +52,7 @@ resource "google_cloud_scheduler_job" "bgg_top1000_bot" {
   schedule = "0 9 * * 6"
 
   http_target {
-    # uri         = "https://europe-central2-boardgamegeek-bots.cloudfunctions.net/bgg-top1000-bot?channelId=@bggtop1000&isDevMode=off"
-    uri         = "https://europe-central2-boardgamegeek-bots.cloudfunctions.net/bgg-top1000-bot?channelId=446618160&isDevMode=off"
+    uri         = "https://europe-central2-boardgamegeek-bots.cloudfunctions.net/bgg-top1000-bot?channelId=@bggtop1000&isDevMode=off"
     http_method = "GET"
 
     oidc_token {
