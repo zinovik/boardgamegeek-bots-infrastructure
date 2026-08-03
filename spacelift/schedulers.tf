@@ -12,6 +12,14 @@ resource "google_cloud_scheduler_job" "bgg_top100_bot_dev" {
       audience              = "https://europe-central2-boardgamegeek-bots.cloudfunctions.net/bgg-top100-bot"
     }
   }
+
+  retry_config {
+    retry_count          = 3
+    max_retry_duration   = "3600s"
+    min_backoff_duration = "5s"
+    max_backoff_duration = "60s"
+    max_doublings        = 2
+  }
 }
 
 resource "google_cloud_scheduler_job" "bgg_top1000_bot_dev" {
@@ -27,6 +35,14 @@ resource "google_cloud_scheduler_job" "bgg_top1000_bot_dev" {
       service_account_email = "boardgamegeek-bots@appspot.gserviceaccount.com"
       audience              = "https://europe-central2-boardgamegeek-bots.cloudfunctions.net/bgg-top1000-bot"
     }
+  }
+
+  retry_config {
+    retry_count          = 3
+    max_retry_duration   = "3600s"
+    min_backoff_duration = "5s"
+    max_backoff_duration = "60s"
+    max_doublings        = 2
   }
 }
 
@@ -44,6 +60,14 @@ resource "google_cloud_scheduler_job" "bgg_top100_bot" {
       audience              = "https://europe-central2-boardgamegeek-bots.cloudfunctions.net/bgg-top100-bot"
     }
   }
+
+  retry_config {
+    retry_count          = 3
+    max_retry_duration   = "3600s"
+    min_backoff_duration = "5s"
+    max_backoff_duration = "60s"
+    max_doublings        = 2
+  }
 }
 
 resource "google_cloud_scheduler_job" "bgg_top1000_bot" {
@@ -60,6 +84,14 @@ resource "google_cloud_scheduler_job" "bgg_top1000_bot" {
       audience              = "https://europe-central2-boardgamegeek-bots.cloudfunctions.net/bgg-top1000-bot"
     }
   }
+
+  retry_config {
+    retry_count          = 3
+    max_retry_duration   = "3600s"
+    min_backoff_duration = "5s"
+    max_backoff_duration = "60s"
+    max_doublings        = 2
+  }
 }
 
 resource "google_cloud_scheduler_job" "bgg_games_ranks_cacher" {
@@ -75,5 +107,13 @@ resource "google_cloud_scheduler_job" "bgg_games_ranks_cacher" {
       service_account_email = "boardgamegeek-bots@appspot.gserviceaccount.com"
       audience              = "https://europe-central2-boardgamegeek-bots.cloudfunctions.net/bgg-games-ranks-cacher"
     }
+  }
+
+  retry_config {
+    retry_count          = 3
+    max_retry_duration   = "3600s"
+    min_backoff_duration = "5s"
+    max_backoff_duration = "60s"
+    max_doublings        = 2
   }
 }
